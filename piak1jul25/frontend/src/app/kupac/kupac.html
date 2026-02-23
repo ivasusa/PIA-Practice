@@ -1,0 +1,31 @@
+<h3>Informacije</h3>
+Ime: {{ulogovan.ime}} <br>
+Prezime: {{ulogovan.prezime}} <br>
+Mejl adresa: {{ulogovan.mejl}} <br>
+
+<hr>
+<h3>Proizvodi prodavnice</h3>
+@if(proizvodi.length > 0){
+<table>
+  <tr>
+    <th>Naziv</th>
+    <th>Slika</th>
+  </tr>
+  @for(a of proizvodi; track a.idP){
+    <tr>
+      <td>{{a.naziv}}</td>
+      <td>
+        <img [src]="'/slike/' + a.slika">
+      </td>
+              <td><button (click)="detalji(a)">Detalji</button></td>
+
+    </tr>
+  }
+</table>
+}
+@else {
+<p>Nema proizvoda.</p>
+}
+<br>
+
+<app-logout></app-logout>

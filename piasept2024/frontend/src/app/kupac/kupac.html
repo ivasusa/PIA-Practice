@@ -1,0 +1,51 @@
+<h3>Informacije</h3>
+Ime: {{ulogovan.ime}} <br>
+Prezime: {{ulogovan.prezime}} <br>
+Korisnicko ime: {{ulogovan.korisnicko_ime}} <br>
+
+<hr>
+
+<h3>Aktuelne aukcije</h3>
+@if(aktivneAukcije.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Pocetak</th>
+    <th>Kraj</th>
+  </tr>
+  @for(a of aktivneAukcije; track a.idA){
+    <tr>
+        <td (click)="pogledaj(a)">{{a.naziv}}</td>
+        <td>{{a.pocetak}}</td>
+        <td>{{a.kraj}}</td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema aukcija za koje se mozete prijaviti.</p>
+}
+<br>
+<h3>Kupljenje umetnine</h3>
+@if(mojeumetnine.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Vrednost</th>
+  </tr>
+  @for(a of mojeumetnine; track a.idU){
+    <tr>
+        <td>{{a.naziv}}</td>
+        <td>{{a.ponuda}}</td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema kupljenih umetnina.</p>
+}
+<br>
+
+<app-logout></app-logout>

@@ -1,0 +1,45 @@
+<h3>Informacije Volonter</h3>
+Ime: {{ulogovan.ime}} <br>
+Prezime: {{ulogovan.prezime}} <br>
+Mejl adresa: {{ulogovan.mejl}} <br>
+
+<hr>
+
+<h3>Aktuelne aktivnosti</h3>
+@if(aktuelneAktivnosti.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Potrebni</th>
+    <th>Prijavljeni</th>
+    <th>Akcija</th>
+  </tr>
+  @for(a of aktuelneAktivnosti; track a.idA){
+    <tr>
+        <td>{{a.naziv}}</td>
+        <td>{{a.potrebno}}</td>
+        <td>{{a.prijavljeno}}</td>
+        <td>
+          @if(a.potrebno > a.prijavljeno && !prijavljenPoAktivnosti[a.idA]){
+            <button (click)="prijavi(a)">Prijavi se</button>
+          }
+          @else if(prijavljenPoAktivnosti[a.idA]){
+            Vec ste se prijavili
+          }
+          @else {
+            Nema slobodnih mesta
+          }
+        </td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema aktivnosti za koje se mozete prijaviti.</p>
+}
+@if(poruka){
+  <p>{{poruka}}</p>
+}
+<br>
+<app-logout></app-logout>

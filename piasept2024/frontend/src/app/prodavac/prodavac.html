@@ -1,0 +1,25 @@
+<h3>Sve aukcije</h3>
+@if(aktivneAukcije.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Pocetak</th>
+    <th>Kraj</th>
+  </tr>
+  @for(a of aktivneAukcije; track a.idA){
+    <tr [class.istekla]="jeIstekla(a.kraj)"
+    [class.aktivna]="!jeIstekla(a.kraj)">
+        <td>{{a.naziv}}</td>
+        <td>{{a.pocetak}}</td>
+        <td>{{a.kraj}}</td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema aukcija .</p>
+}
+<br>
+
+<app-logout></app-logout>

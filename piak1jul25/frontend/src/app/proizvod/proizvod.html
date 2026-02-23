@@ -1,0 +1,44 @@
+<h3>Informacije</h3>
+Proizvod: {{proizvod.naziv}} <br>
+Opis: {{proizvod.opis}} <br>
+Cena: {{proizvod.cena}} <br>
+<button (click)="kupi(proizvod)">Kupi</button>
+
+
+<h3>Dodaj komentar</h3>
+
+<table>
+  <tr>
+    <td>Tekst</td>
+    <td><input type="text" [(ngModel)]="tekst"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><button (click)="komentarisi(tekst)">Dodaj komentar</button></td>
+  </tr>
+</table>
+
+<hr>
+<h3>Komentari proizvoda</h3>
+@if(komentari.length > 0){
+<table>
+  <tr>
+    <th>Tekst komentara</th>
+    <th>Korisničko ime</th>
+  </tr>
+  @for(a of komentari; track a.idK){
+    <tr>
+      <td>{{a.tekst}}</td>
+      <td>{{a.korisnik}}</td>
+      
+
+    </tr>
+  }
+</table>
+}
+@else {
+<p>Nema komentara.</p>
+}
+<br>
+
+<app-logout></app-logout>

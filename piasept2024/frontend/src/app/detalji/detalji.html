@@ -1,0 +1,31 @@
+<h3>Umetnine u aukciji</h3>
+@if(umetnine.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Najveca ponuda</th>
+    <th>Moja ponuda</th>
+    <th>Akcija</th>
+
+
+    
+  </tr>
+  @for(a of umetnine; track a.idU){
+    <tr>
+        <td>{{a.naziv}}</td>
+        <td>{{a.ponuda}}</td>
+<td><input type="number" [(ngModel)]="a.novaPonuda"></td>
+<td><button (click)="unesiPonudu(a)">Ponudi</button></td>
+
+    </tr>
+  }
+  
+</table>
+<span style="color: red;">{{greska}}</span> <br>
+}
+@else {
+    <p>Nema umetnina u ovoj aukciji.</p>
+}
+<br>
+
+<app-logout></app-logout>

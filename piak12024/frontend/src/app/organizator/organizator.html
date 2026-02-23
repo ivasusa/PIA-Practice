@@ -1,0 +1,19 @@
+<h3>Aktuelne aktivnosti</h3>
+@if(aktuelneAktivnosti.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+  </tr>
+  @for(a of aktuelneAktivnosti; track a.idA){
+    <tr>
+        <td><a (click)="prijavi(a)">{{a.naziv}}</a></td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema aktivnosti za koje se mozete prijaviti.</p>
+}
+<br>
+<app-logout></app-logout>

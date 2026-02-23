@@ -1,0 +1,28 @@
+<h3>Informacije</h3>
+Ime: {{ulogovan.ime}} <br>
+Prezime: {{ulogovan.prezime}} <br>
+Korisnicko ime: {{ulogovan.korisnicko_ime}} <br>
+
+<hr>
+
+<h3>Aktuelne aktivnosti</h3>
+@if(aktuelneAktivnosti.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+  </tr>
+  @for(a of aktuelneAktivnosti; track a.id){
+    <tr>
+        <td>{{a.naziv}}</td>
+        <td><a routerLink="../prijava" (click)="prijavi(a)">Prijavi aktivnost</a></td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema aktivnosti za koje se mozete prijaviti.</p>
+}
+<br>
+
+<app-logout></app-logout>

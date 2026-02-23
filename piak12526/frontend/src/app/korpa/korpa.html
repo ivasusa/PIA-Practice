@@ -1,0 +1,23 @@
+<p>korpa works!</p>
+
+@if(proizvodi.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+     <th>Cena</th>
+  </tr>
+  @for(a of proizvodi; track a.naziv){
+    <tr>
+<td>
+{{ a.naziv }}
+</td>
+        <td>{{a.cena}}</td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema proizvoda.</p>
+}
+<br>

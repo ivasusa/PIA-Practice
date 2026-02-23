@@ -1,0 +1,57 @@
+<h3>Sve narudzbine</h3>
+@if(narudzbine.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Pice</th>
+    <th>Velicina</th>
+    <th>Dodaci</th>
+    <th>Cena</th>
+    <th>Status</th>
+        <th>Akcija</th>
+  </tr>
+  @for(a of narudzbine; track a.id){
+
+@if(a.status == "nova"){
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.pica}}</td>
+        <td>{{a.velicina}}</td>
+        <td>{{a.dodaci}}</td>
+        <td>{{a.cena}}</td>
+        <td>{{a.status}}</td> 
+        <button (click)="odbij(a)">Odbij</button>
+        <button (click)="prihvati(a)">Prihvati</button>
+    </tr>
+    }
+@else {
+     <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.pica}}</td>
+        <td>{{a.velicina}}</td>
+        <td>{{a.dodaci}}</td>
+        <td>{{a.cena}}</td>
+        <td>{{a.status}}</td>
+    </tr>
+}
+
+}  
+</table>
+}
+@else {
+    <p>Nema narudzbina.</p>
+}
+Dodaci:
+<ul type="dodaci">
+     @for(a of dodaci; track a.naziv){
+        @if(a.dostupan==true){
+<li> <input type="checkbox" [(ngModel)]="a.dostupan" name="{{a.naziv}}" checked >{{a.naziv}} </li>
+        }
+        @else {
+<li> <input type="checkbox"[(ngModel)]="a.dostupan" name="{{a.naziv}} " >{{a.naziv}} </li>}
+  }
+
+</ul> 
+        <button (click)="azuriraj()">Azuriraj</button>
+
+<app-logout></app-logout>

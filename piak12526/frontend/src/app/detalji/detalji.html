@@ -1,0 +1,27 @@
+<h3>Detalji proizvoda</h3>
+
+@if (proizvod) {
+  <table border="1">
+    <tr>
+      <td>Naziv:</td>
+      <td>{{ proizvod.naziv }}</td>
+    </tr>
+    <tr>
+      <td>Opis:</td>
+      <td>{{ proizvod.opis }}</td>
+    </tr>
+    <tr>
+      <td>Cena:</td>
+      <td>{{ proizvod.cena }}</td>
+    </tr>
+      
+  </table>
+  <br>
+ <button (click)="dodajUKorpu()">Dodaj u korpu</button>
+<button (click)="pregledajKorpu()">Pregledaj korpu</button>
+  <br>
+}
+@else {
+  <p>Proizvod nije pronadjen.</p>
+}
+<app-logout></app-logout>

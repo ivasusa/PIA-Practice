@@ -1,0 +1,31 @@
+<h3>Informacije o odabranoj pici</h3>
+Naziv: {{pica.naziv}} <br>
+Opis: {{pica.opis}} <br>
+Cena: {{pica.cena}} <br>
+
+<hr>
+<h3>Naruci:</h3>
+Velicina pice:
+ <select [(ngModel)]="vrsta">
+        <option value="mala">mala (+0 rsd)</option>
+        <option value="srednja">srednja (+100 rsd)</option>
+        <option value="velika">velika (+200 rsd)</option>
+      </select>
+      <br>
+Dodaci:
+<ul type="dodaci">
+     @for(a of dodaci; track a.naziv){
+        @if(a.dostupan==true){
+<li> <input type="checkbox" name="{{a.naziv}}" (click)="dodajDodatak(a)">{{a.naziv}} - {{a.cena}}rsd</li>
+        }
+        @else {
+<li> <input type="checkbox" name="{{a.naziv}} " disabled>{{a.naziv}} - {{a.cena}}rsd </li>}
+  }
+
+</ul>  
+<button (click)="gotovo()">Gotovo</button> 
+<br>   
+<span style="color: purple;">{{poruka}}</span> <br> 
+<span style="color: purple;">Cena je {{cenaPice}} rsd</span> <br> 
+<hr>
+<button (click)="nazad()">Nazad</button>

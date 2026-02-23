@@ -1,0 +1,50 @@
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Datum</th>
+    <th>Potrebni</th>
+    <th>Prijavljeni</th>
+  </tr>
+  <tr>
+    <td>{{aktivnost.naziv}}</td>
+    <td>{{aktivnost.datum}}</td>
+    <td>{{aktivnost.potrebno}}</td>
+    <td>{{aktivnost.prijavljeno}}</td>
+  </tr>
+</table>
+<button (click)="povecaj()">Povecaj br potrebnih</button>
+<h3>Prijavljeni korisnici</h3>
+<ul>
+  @for(k of prijavljeni; track k.kor_ime){
+    <li>
+      {{k.ime}} {{k.prezime}} ({{k.kor_ime}}) - {{k.status}}
+      @if(k.status?.toLowerCase() == 'neodobren' || k.status?.toLowerCase() == 'prijavljen'){
+        <button (click)="odobri(k.kor_ime)">Odobri</button>
+      }
+    </li>
+  }
+</ul>
+<hr>
+<h3>Dodaj novu aktivnost</h3>
+<table>
+  <tr>
+    <td>Naziv:</td>
+    <td><input type="text" [(ngModel)]="naziv"></td>
+  </tr>
+  <tr>
+    <td>Datum:</td>
+    <td><input type="date" [(ngModel)]="datum"></td>
+  </tr>
+  <tr>
+    <td>Broj potrebnih:</td>
+    <td><input type="number" [(ngModel)]="brojPotrebnih"></td>
+  </tr>
+</table>
+<button (click)="dodajAktivnost()">Dodaj aktivnost</button>
+@if(porukaDodavanje){
+  <p>{{porukaDodavanje}}</p>
+}
+
+<hr>
+
+<app-logout></app-logout>

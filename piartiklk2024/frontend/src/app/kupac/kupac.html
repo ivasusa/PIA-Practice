@@ -1,0 +1,70 @@
+<h3>Informacije</h3>
+Ime: {{ulogovan.ime}} <br>
+Prezime: {{ulogovan.prezime}} <br>
+Korisnicko ime: {{ulogovan.korisnicko_ime}} <br>
+
+<hr>
+
+<h3>Aktuelne aktivnosti</h3>
+@if(narudzbine.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    <th>Pice</th>
+    <th>Velicina</th>
+    <th>Dodaci</th>
+    <th>Cena</th>
+    <th>Status</th>
+  </tr>
+  @for(a of narudzbine; track a.id){
+    @if(a.status == "prihvacena"){
+    <tr style="background-color: lightgreen;">
+        <td>{{a.id}}</td>
+        <td>{{a.pica}}</td>
+        <td>{{a.velicina}}</td>
+        <td>{{a.dodaci}}</td>
+        <td>{{a.cena}}</td>
+        <td>{{a.status}}</td>
+    </tr>}
+    @else {
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.pica}}</td>
+        <td>{{a.velicina}}</td>
+        <td>{{a.dodaci}}</td>
+        <td>{{a.cena}}</td>
+        <td>{{a.status}}</td>
+    </tr>
+}
+  }
+  
+</table>
+}
+@else {
+    <p>Nema narudzbina.</p>
+}
+<br>
+<h3>Pice</h3>
+@if(pice.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+    
+          <th>Akcija</th>
+  </tr>
+  @for(a of pice; track a.naziv){
+    <tr>
+        <td>{{a.naziv}}</td>
+  
+        <td><button (click)="naruci(a)">Naruci</button></td>
+
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Jos uvek nema pica.</p>
+}
+<br>
+<app-logout></app-logout>

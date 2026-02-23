@@ -1,0 +1,23 @@
+<h3>Prijava</h3>
+<table>
+  <tr>
+    <td>Korisnicko ime:</td>
+    <td><input type="text" [(ngModel)]="username"></td>
+  </tr>
+  <tr>
+    <td>Lozinka:</td>
+    <td><input type="password" [(ngModel)]="password"></td>
+  </tr>
+  <tr>
+    <td>Tip:</td>
+    <td>
+      <select [(ngModel)]="tip">
+        <option value="kupac">kupac</option>
+        <option value="radnik">radnik</option>
+      </select>
+    </td>
+  </tr>
+</table>
+<br>
+<span style="color: red;">{{greska}}</span> <br>
+<button (click)="login()">Prijava</button>

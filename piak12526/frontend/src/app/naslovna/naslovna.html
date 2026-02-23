@@ -1,0 +1,24 @@
+
+
+<h3>Naslovna strana</h3>
+@if(proizvodi.length > 0){
+<table border="1">
+  <tr>
+    <th>Naziv</th>
+     <th>Cena</th>
+  </tr>
+  @for(a of proizvodi; track a.naziv){
+    <tr>
+<td>
+<button type="button" (click)="naslovna(a)">{{ a.naziv }}</button>
+</td>
+        <td>{{a.cena}}</td>
+    </tr>
+  }
+  
+</table>
+}
+@else {
+    <p>Nema proizvoda.</p>
+}
+<br>

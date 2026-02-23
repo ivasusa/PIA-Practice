@@ -1,0 +1,16 @@
+<p>izmena works!</p>
+<!-- unapred popunjenu formu sa dva tekstualna polja (za naziv i cenu proizvoda) i tekstualni
+prostor (za detalje tom proizvodu), uz to da se tekstualno polje za naziv proizvoda ne može
+promeniti (onemogućeno za izmenu) -->
+
+<form>
+    @if(proizvod) {
+    <label for="naziv">Naziv:</label><br>
+    <input type="text" id="naziv" name="naziv" [(ngModel)]="proizvod.naziv" disabled><br>
+    <label for="cena">Cena:</label><br>
+    <input type="text" id="cena" name="cena" [(ngModel)]="proizvod.cena"><br>
+    <label for="opis">Opis:</label><br>
+    <textarea id="opis" name="opis" [(ngModel)]="proizvod.opis"></textarea><br><br>
+    <button (click)="potvrdi()">Sačuvaj</button>
+    }
+</form>
